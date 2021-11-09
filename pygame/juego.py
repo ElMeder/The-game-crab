@@ -27,8 +27,8 @@ class Enemigos(pygame.sprite.Sprite):
         if self.rect.left < 0:
             self.rect.left = 0
             
-        if self.rect.right > 683:
-            self.rect.right = 683
+        if self.rect.right > 500:
+            self.rect.right = 500
         
 def update(self):
     self.rect.x += self.velocidad_x
@@ -41,8 +41,12 @@ clock = pygame.time.Clock()
 done = False 
 
 sprite = pygame.sprite.Group()
+enemigo = pygame.sprite.Group()
+
+
+
 enemigos = Enemigos()
-sprite.add(enemigos)
+enemigo.add(enemigos)
 
 fondo = pygame.image.load("img/mapa.png").convert()
 player = pygame.image.load("img/crab-1.png").convert()
@@ -85,7 +89,14 @@ while not done:
                 y_speed = 0
             if event.key == pygame.K_DOWN:
                 y_speed = 0
-            
+    
+    enemigo.update()
+    
+ 
+        
+  
+    enemigo.draw(screen)
+        
     screen.blit(fondo, [0, 0])
     
     coord_x += x_speed
